@@ -3,7 +3,6 @@ package concad.core.util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -16,29 +15,15 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
-
 import concad.Activator;
 import concad.core.builder.IncrementalBuilder;
 import concad.core.constant.Constant;
 import concad.core.log.PluginLogger;
-import concad.core.nature.NatureHandler;
 
-/**
- * @author Luciano Sampaio
- */
+
 public abstract class HelperProjects {
 
-	/**
-	 * The resource types that we want to visit.
-	 */
-	private static List<String>	resourceTypesWanted;
-
-	/**
-	 * Returns the collection of projects which exist under this root. <br/>
-	 * This collection has only Java projects and which are accessible and opened.
-	 * 
-	 * @return An list of projects.
-	 */
+	
 	public static List<IProject> getProjectsInWorkspace() {
 		// Returns the collection of projects which exist under this root. The projects can be open or closed.
 		IProject[] allProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
@@ -59,11 +44,7 @@ public abstract class HelperProjects {
 		return javaProjects;
 	}
 
-	/**
-	 * Returns a collection containing the projects that are being monitored by our plug-in.
-	 * 
-	 * @return A collection of projects' names.
-	 */
+	
 	public static List<IProject> getMonitoredProjects() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 
@@ -101,7 +82,7 @@ public abstract class HelperProjects {
 		store.putValue(Constant.PrefPageSecurityVulnerability.FIELD_MONITORED_PROJECTS, projectsToSave.toString());
 
 		// Add or remove the nature to the each project.
-		updateNatureOnProjects(monitoredProjects, projects);
+		//updateNatureOnProjects(monitoredProjects, projects);
 
 		resetPluginState();
 	}
@@ -111,7 +92,8 @@ public abstract class HelperProjects {
 		IncrementalBuilder.reset();
 	}
 
-	private static void updateNatureOnProjects(List<IProject> oldProjects, List<IProject> newProjects) {
+	/*private static void updateNatureOnProjects(List<IProject> oldProjects, List<IProject> newProjects) {
+		System.out.println("Natureeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 		// Create a difference from the old and the new list.
 		List<IProject> projectsToAdd = new ArrayList<IProject>();
 		projectsToAdd.addAll(newProjects);
@@ -122,17 +104,15 @@ public abstract class HelperProjects {
 		projectsToRemove.removeAll(newProjects);
 
 		try {
-			NatureHandler handler = new NatureHandler();
+			NatureHandler2 handler = new NatureHandler2();
 			handler.add(projectsToAdd);
 			handler.remove(projectsToRemove);
 		} catch (CoreException e) {
 			PluginLogger.logError(e);
 		}
-	}
+	}*/
 
-	/**
-	 * @param projects
-	 */
+	
 	public static void addProjectsToListOfMonitoredProjects(List<IProject> projects) {
 		// If the collection is empty there is nothing to do.
 		if ((null != projects) && (!projects.isEmpty())) {
@@ -152,9 +132,6 @@ public abstract class HelperProjects {
 		}
 	}
 
-	/**
-	 * @param projects
-	 */
 	public static void removeProjectsFromListOfMonitoredProjects(List<IProject> projects) {
 		// If the collection is empty there is nothing to do.
 		if ((null != projects) && (!projects.isEmpty())) {
@@ -171,13 +148,7 @@ public abstract class HelperProjects {
 		}
 	}
 
-	/**
-	 * Get the list(unique elements) of selected projects by the developer. Even if he/she selected a file.
-	 * 
-	 * @param event
-	 *          The data object to pass to the command (and its handler) as it executes.
-	 * @return A list(unique elements) of selected projects by the developer.
-	 */
+	
 	public static List<IProject> getSelectedProjects(ExecutionEvent event) {
 		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
 		ISelection selection = window.getActivePage().getSelection();
@@ -185,13 +156,7 @@ public abstract class HelperProjects {
 		return getSelectedProjects(selection);
 	}
 
-	/**
-	 * Get the list(unique elements) of selected projects by the developer. Even if he/she selected a file.
-	 * 
-	 * @param selection
-	 *          The objection that contains the current selection.
-	 * @return A list(unique elements) of selected projects by the developer.
-	 */
+	
 	public static List<IProject> getSelectedProjects(ISelection selection) {
 		List<IProject> projects = new ArrayList<IProject>();
 
@@ -209,37 +174,6 @@ public abstract class HelperProjects {
 		return projects;
 	}
 
-	/**
-	 * Check if the detection should be performed in this resource or not.
-	 * 
-	 * @param resource
-	 *          The resource that will be tested.
-	 * @return True if the detection should be performed in this resource, otherwise false.
-	 */
-	public static boolean isToPerformDetection(IResource resource) {
-		if (resource instanceof IFile) {
-			if (null == resourceTypesWanted) {
-				resourceTypesWanted = getResourceTypesToPerformDetection();
-			}
-
-			String fileExtension = (null != resource.getFileExtension()) ? resource.getFileExtension() : "";
-			return resourceTypesWanted.contains(fileExtension.toLowerCase());
-		}
-
-		// If it reaches this point, it means that the detection should not be performed in this resource.
-		return false;
-	}
-
-	/**
-	 * Get the resource types that will be perform the early security vulnerability detection.
-	 * 
-	 * @return A list of resource types.
-	 */
-	public static List<String> getResourceTypesToPerformDetection() {
-		List<String> resourceTypes = Convert.fromStringToList(Constant.RESOURCE_TYPE_TO_PERFORM_DETECTION,
-				Constant.SEPARATOR_RESOURCES_TYPE);
-
-		return resourceTypes;
-	}
+	
 
 }

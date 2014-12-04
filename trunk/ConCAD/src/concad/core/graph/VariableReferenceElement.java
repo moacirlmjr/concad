@@ -4,8 +4,8 @@ import org.eclipse.jdt.core.dom.ASTNode;
 
 public class VariableReferenceElement {
 
-	private ASTNode	reference;
-	private int			contextId;
+	private ASTNode reference;
+	private int contextId;
 
 	public VariableReferenceElement(ASTNode reference, int contextId) {
 		setReference(reference);

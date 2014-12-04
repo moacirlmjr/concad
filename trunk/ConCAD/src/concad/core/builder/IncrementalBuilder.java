@@ -52,7 +52,7 @@ public class IncrementalBuilder extends IncrementalProjectBuilder {
 	@Override
 	protected IProject[] build(int kind, Map<String, String> args, IProgressMonitor monitor) throws CoreException {
 		try {
-			PluginLogger.logInfo("IncrementalBuilder / build()");
+			PluginLogger.logInfo("IncrementalBuilder / build(int, Map, IProgressMonitor)");
 
 			if (kind == FULL_BUILD) {
 				fullBuild(monitor);
@@ -74,7 +74,7 @@ public class IncrementalBuilder extends IncrementalProjectBuilder {
 	}
 
 	protected void fullBuild(final IProgressMonitor monitor) {
-		PluginLogger.logInfo("IncrementalBuilder / fullBuild()");
+		PluginLogger.logInfo("IncrementalBuilder / fullBuild(IProgressMonitor)");
 		addProjectToFullBuiltList(getProject());
 		System.out.println("IncrementalBuilderFullBuild");
 		cancelIfNotRunning(jobProject);
@@ -85,7 +85,7 @@ public class IncrementalBuilder extends IncrementalProjectBuilder {
 	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) {
 		if (wasProjectFullBuilt(getProject())) {
 			cancelIfNotRunning(jobDelta);
-			PluginLogger.logInfo("IncrementalBuilder / incrementalBuild()");
+			PluginLogger.logInfo("IncrementalBuilder / incrementalBuild(IResourceDelta, IProgressMonitor)");
 			System.out.println("IncrementalBuilderIncrementalBuild");
 			jobDelta = new BuilderJob(Message.Plugin.JOB, delta);
 			jobDelta.run();

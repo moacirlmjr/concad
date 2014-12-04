@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="concad.priotization.criteria.util.ModifiabilityScenario"
+		table="MODIFIABILITYSCENARIO">
+		<id name="id" type="java.lang.Long">
+			<column name="MODIFIABILITYSCENARIO_ID" />
+			<generator class="increment" />
+		</id>
+		<property generated="never" lazy="false" name="name"
+			type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<property generated="never" lazy="false" name="description"
+			type="java.lang.String">
+			<column name="DESCRIPTION" />
+		</property>
+		<bag name="classes" lazy="false" cascade="all-delete-orphan"
+			table="CLASSES">
+			<key column="MODIFIABILITYSCENARIO_ID" not-null="true" />
+			<element column="class" type="java.lang.String"></element>
+		</bag>
+		<bag name="packages" lazy="false" cascade="all-delete-orphan"
+			table="PACKAGES">
+			<key column="MODIFIABILITYSCENARIO_ID" not-null="true" />
+			<element column="package" type="java.lang.String"></element>
+		</bag>
+		<property generated="never" lazy="false" name="importance"
+			type="java.lang.Double">
+			<column name="IMPORTANCE" />
+		</property>
+		<property generated="never" lazy="false" name="projectName"
+			type="java.lang.String">
+			<column name="PROJECTNAME" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -57,6 +57,9 @@ public class RankingViewerComparator extends ViewerComparator {
     case 5:
   	  rc = RankingManager.getInstance().getRankingCalculator().getRankingValue(p1).compareTo(RankingManager.getInstance().getRankingCalculator().getRankingValue(p2));
         break;
+    case 6:
+    	  rc = p1.getDetectedAt().compareTo(p2.getDetectedAt());
+          break;
        default:
       rc = 0;
     }

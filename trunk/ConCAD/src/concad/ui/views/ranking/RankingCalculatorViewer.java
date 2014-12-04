@@ -78,9 +78,7 @@ public class RankingCalculatorViewer implements RankingViewer{
 		    return formatBra.format(p.getDetectedAt().getTime());
 		       
 		  }
-		});
-
-		
+		});		
 		
 		TableViewerColumn affectedClassesRankingValue = createTableViewerColumn(comparator, viewer, "Affected Classes", 100, 7);
 		affectedClassesRankingValue.setLabelProvider(new ColumnLabelProvider() {

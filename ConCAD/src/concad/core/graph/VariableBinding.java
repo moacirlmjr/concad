@@ -4,7 +4,6 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.Expression;
 import org.eclipse.jdt.core.dom.IBinding;
 
-import concad.core.graph.flow.DataFlow;
 import concad.ui.enumerator.EnumVariableStatus;
 import concad.ui.enumerator.EnumVariableType;
 
@@ -17,7 +16,7 @@ public class VariableBinding {
 	private Expression initializer;
 	private EnumVariableStatus status;
 	private EnumVariableType type;
-	private DataFlow dataFlow;
+	//private DataFlows dataFlow;
 
 	private final ReferenceManager referenceManager;
 
@@ -72,16 +71,16 @@ public class VariableBinding {
 		this.type = type;
 	}
 
-	public DataFlow getDataFlow() {
+/*	public DataFlows getDataFlow() {
 		return dataFlow;
 	}
 
-	public VariableBinding setDataFlow(DataFlow dataFlow) {
+	public VariableBinding setDataFlow(DataFlows dataFlow) {
 		this.dataFlow = dataFlow;
 
 		return this;
 	}
-
+*/
 	/**
 	 * {@inheritDoc}
 	 */

@@ -70,6 +70,7 @@ public class DesignFlawManager {
 	}
 
 	public void countCodeSmellsDebug() {
+		PluginLogger.logInfo("DesignFlawManager / countCodeSmellsDebug()");
 		HashMap<String, Integer> codeSmellsCount = new HashMap<String, Integer>();
 		for (CodeSmell smell : smells) {
 			if (codeSmellsCount.get(smell.getKindOfSmellName()) == null) {
@@ -84,6 +85,8 @@ public class DesignFlawManager {
 	}
 
 	public void calculateMetricsCode(IProject project) throws IOException {
+		PluginLogger.logInfo("DesignFlawManager / calculateMetricsCode(IProject)");
+
 		try {
 			analyseProject(project);
 			visitor.executeMetrics();
@@ -94,11 +97,12 @@ public class DesignFlawManager {
 	}
 
 	public void calculateAditionalMetrics() {
+		PluginLogger.logInfo("DesignFlawManager / calculateAditionalMetrics()");
 		visitor.calculateAditionalMetrics();
 	}
 
 	public void detectCodeSmells(String selectedProject) {
-		PluginLogger.logInfo("DesignFlawManager / detectCodeSmells()");
+		PluginLogger.logInfo("DesignFlawManager / detectCodeSmells(String)");
 
 		smells = new Vector<CodeSmell>();
 		resetDetectors(selectedProject);
@@ -142,7 +146,7 @@ public class DesignFlawManager {
 	}
 
 	public void detectCodeSmellsVisitor(IResource resource) {
-		PluginLogger.logInfo("DesignFlawManager / detectCodeSmellsVisitor()");
+		PluginLogger.logInfo("DesignFlawManager / detectCodeSmellsVisitor(IResource)");
 		resetDetectors(resource.getProject().getName());
 		List<ClassMetrics> lclassMetrics = visitor.getLClassesMetrics();
 		ClassMetrics classMetrics = null;
@@ -208,7 +212,7 @@ public class DesignFlawManager {
 	}
 
 	private void resetDetectors(String projectName) {
-		PluginLogger.logInfo("DesignFlawManager / resetDetectors()");
+		PluginLogger.logInfo("DesignFlawManager / resetDetectors(String)");
 
 		classDetectors = new Vector<CodeSmellDetector>();
 		classDetectors.add(new GodClassDetector(DataBaseManager.getInstance().getGodClassDetectionConfiguration(projectName)));
@@ -260,7 +264,7 @@ public class DesignFlawManager {
 	}
 
 	private void deleteSmellMarker(IResource target, String kind, int line) {
-		PluginLogger.logInfo("DesignFlawManager / deleteSmellMarker(IResource)");
+		PluginLogger.logInfo("DesignFlawManager / deleteSmellMarker(IResource, String, int)");
 		
 		try {
 			IMarker[] markers = target.findMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE);

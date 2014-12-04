@@ -16,25 +16,11 @@ import org.eclipse.core.runtime.jobs.Job;
 
 import concad.core.graph.CallGraph;
 import concad.core.log.PluginLogger;
-import concad.core.util.Timer;
 import concad.core.visitor.VisitorCallGraph;
 import concad.ui.l10n.Message;
 
-/**
- * This class performs its operations in a different(new) thread from the UI
- * Thread. So the user will not be blocked.
- * 
- * @Author: Luciano Sampaio
- * @Date: 2014-05-07
- * @Version: 01
- */
 public class BuilderJob extends Job {
 
-	/**
-	 * This object contains all the methods, variables and their interactions,
-	 * on the project that is being analyzed. At any given time, we should only
-	 * have one call graph per project.
-	 */
 	private static Map<IProject, CallGraph> mapCallGraphs;
 	private IProject project;
 	private IResourceDelta delta;
@@ -46,13 +32,13 @@ public class BuilderJob extends Job {
 	private BuilderJob(String name) {
 		super(name);
 		System.out.println("BuilderJob");
-		PluginLogger.logInfo("BuilderJob / constructor()");
+		PluginLogger.logInfo("BuilderJob / constructor(String)");
 	}
 
 	public BuilderJob(String name, IProject project) {
 		this(name);
 		System.out.println("BuilderJob");
-		PluginLogger.logInfo("BuilderJob / constructor(IProject)");
+		PluginLogger.logInfo("BuilderJob / constructor(String, IProject)");
 		setProject(project);
 		addProjectToList(project);
 	}
@@ -60,11 +46,13 @@ public class BuilderJob extends Job {
 	public BuilderJob(String name, IResourceDelta delta) {
 		this(name);
 		System.out.println("BuilderJob");
-		PluginLogger.logInfo("BuilderJob / constructor(IResourceDelta)");
+		PluginLogger
+				.logInfo("BuilderJob / constructor(String, IResourceDelta)");
 		setDelta(delta);
 	}
 
 	private static Map<IProject, CallGraph> getMapCallGraphs() {
+		PluginLogger.logInfo("BuilderJob / getMapCallGraphs()");
 		return mapCallGraphs;
 	}
 
@@ -84,39 +72,23 @@ public class BuilderJob extends Job {
 		this.delta = delta;
 	}
 
-	/**
-	 * Add the project to the list of call graphs.
-	 * 
-	 * @param project
-	 *            The project that will be added to the list.
-	 */
 	private void addProjectToList(IProject project) {
-		System.out.println("BuilderJob");
+		PluginLogger.logInfo("BuilderJob / addProjectToList(IProject)");
 		if (!getMapCallGraphs().containsKey(project)) {
 			getMapCallGraphs().put(project, new CallGraph());
 		}
 	}
 
-	/**
-	 * Returns the call graph of the current project.
-	 * 
-	 * @return The call graph of the current project.
-	 */
 	private CallGraph getCallGraph() {
-		System.out.println("BuilderJob");
+		PluginLogger.logInfo("BuilderJob / getCallGraph()");
 		if (null != getDelta()) {
-			return getMapCallGraphs().get(getDelta().getResource().getProject());
+			return getMapCallGraphs()
+					.get(getDelta().getResource().getProject());
 		} else {
 			return getMapCallGraphs().get(getProject());
 		}
 	}
 
-	/**
-	 * Returns whether cancellation of current operation has been requested
-	 * 
-	 * @param reporter
-	 * @return true if cancellation has been requested, and false otherwise.
-	 */
 	private boolean userCanceledProcess(IProgressMonitor monitor) {
 		return ((null != monitor) && (monitor.isCanceled()));
 	}
@@ -126,21 +98,20 @@ public class BuilderJob extends Job {
 		schedule();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	protected IStatus run(IProgressMonitor monitor) {
+		PluginLogger.logInfo("BuilderJob / run()");
 		System.out.println("BuilderJobRun");
 		try {
 			// if (manager.shouldPerformVerifications()) {
-			Timer timerCP = (new Timer("01 - Complete Process: ")).start();
+		
 
 			// 02 - Get the CallGraph instance for this project.
 			CallGraph callGraph = getCallGraph();
 			if (null != callGraph) {
 				monitor.beginTask(Message.Plugin.TASK, IProgressMonitor.UNKNOWN);
 
+				@SuppressWarnings("unused")
 				List<IResource> resourcesUpdated = new ArrayList<IResource>();
 				if (!userCanceledProcess(monitor)) {
 					// 03 - Use the VISITOR pattern to create/populate the
@@ -151,11 +122,13 @@ public class BuilderJob extends Job {
 				}
 
 			} else {
-				String projectName = (null != getProject()) ? getProject().getName() : "";
-				PluginLogger.logError(String.format(Message.Error.CALL_GRAPH_DOES_NOT_CONTAIN_PROJECT, projectName),
-						null);
+				String projectName = (null != getProject()) ? getProject()
+						.getName() : "";
+				PluginLogger.logError(String.format(
+						Message.Error.CALL_GRAPH_DOES_NOT_CONTAIN_PROJECT,
+						projectName), null);
 			}
-			PluginLogger.logInfo(timerCP.stop().toString());
+		
 			// }
 		} catch (CoreException e) {
 			PluginLogger.logError(e);
@@ -172,21 +145,25 @@ public class BuilderJob extends Job {
 		return Status.OK_STATUS;
 	}
 
-	private List<IResource> createCallGraph(CallGraph callGraph, IProgressMonitor monitor) throws CoreException {
+	private List<IResource> createCallGraph(CallGraph callGraph,
+			IProgressMonitor monitor) throws CoreException {
 		List<IResource> resourcesUpdated = new ArrayList<IResource>();
+		PluginLogger.logInfo("BuilderJob / createCallGraph(CallGraph, IProgressMonitor)");
+
 		System.out.println("BuilderJobCallGraph");
-		VisitorCallGraph visitorCallGraph = new VisitorCallGraph(callGraph, monitor);
+		VisitorCallGraph visitorCallGraph = new VisitorCallGraph(callGraph,
+				monitor);
 
 		if (null != getDelta()) {
-			Timer timer = (new Timer("01.1 - Call Graph Delta: ")).start();
+
 			// 03 - Use the VISITOR pattern to create/populate the call graph.
 			resourcesUpdated = visitorCallGraph.run(getDelta());
-			PluginLogger.logIfDebugging(timer.stop().toString());
+
 		} else if (null != getProject()) {
-			Timer timer = (new Timer("01.1 - Call Graph Project: ")).start();
+
 			// 03 - Use the VISITOR pattern to create/populate the call graph.
 			resourcesUpdated = visitorCallGraph.run(getProject());
-			PluginLogger.logIfDebugging(timer.stop().toString());
+
 		}
 
 		return resourcesUpdated;

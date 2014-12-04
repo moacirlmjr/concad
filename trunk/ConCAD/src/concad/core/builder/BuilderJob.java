@@ -14,7 +14,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
-import concad.Manager;
 import concad.core.graph.CallGraph;
 import concad.core.log.PluginLogger;
 import concad.core.util.Timer;
@@ -134,9 +133,6 @@ public class BuilderJob extends Job {
 	protected IStatus run(IProgressMonitor monitor) {
 		System.out.println("BuilderJobRun");
 		try {
-			// 01 - The manager knows what are the actions that should be
-			// performed.
-			Manager manager = Manager.getInstance();
 			// if (manager.shouldPerformVerifications()) {
 			Timer timerCP = (new Timer("01 - Complete Process: ")).start();
 
@@ -154,12 +150,6 @@ public class BuilderJob extends Job {
 					return Status.CANCEL_STATUS;
 				}
 
-				if (!userCanceledProcess(monitor)) {
-					// 04 - Run the plug-in's verifications.
-					runDetection(resourcesUpdated, callGraph, manager, monitor);
-				} else {
-					return Status.CANCEL_STATUS;
-				}
 			} else {
 				String projectName = (null != getProject()) ? getProject().getName() : "";
 				PluginLogger.logError(String.format(Message.Error.CALL_GRAPH_DOES_NOT_CONTAIN_PROJECT, projectName),
@@ -200,15 +190,6 @@ public class BuilderJob extends Job {
 		}
 
 		return resourcesUpdated;
-	}
-
-	private void runDetection(List<IResource> resourcesUpdated, CallGraph callGraph, Manager manager,
-			IProgressMonitor monitor) {
-		System.out.println("BuilderJobRunDetection");
-		Timer timer = (new Timer("01.2 - Plug-in verifications: ")).start();
-		// 05 - Perform the plug-in's verifications.
-		manager.run(resourcesUpdated, callGraph, monitor);
-		PluginLogger.logIfDebugging(timer.stop().toString());
 	}
 
 }

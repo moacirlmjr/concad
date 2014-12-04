@@ -18,7 +18,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import concad.Activator;
-import concad.Manager;
 import concad.core.builder.IncrementalBuilder;
 import concad.core.constant.Constant;
 import concad.core.log.PluginLogger;
@@ -110,7 +109,6 @@ public abstract class HelperProjects {
 	public static void resetPluginState() {
 		// Reset the state of the plug-in to its initial state.
 		IncrementalBuilder.reset();
-		Manager.reset();
 	}
 
 	private static void updateNatureOnProjects(List<IProject> oldProjects, List<IProject> newProjects) {

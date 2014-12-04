@@ -21,7 +21,6 @@ import org.eclipse.ui.PlatformUI;
 
 import concad.core.design.DesignFlawManager;
 import concad.core.graph.CallGraph;
-import concad.core.reporter.Reporter;
 import concad.metrics.storage.InvokingCache;
 import concad.priotization.RankingManager;
 import concad.ui.views.ConCADView;
@@ -93,7 +92,6 @@ public class VisitorCallGraph implements IResourceVisitor, IResourceDeltaVisitor
 		switch (delta.getKind()) {
 		case IResourceDelta.REMOVED:
 			// Delete old files, markers and etc related to this project.
-			Reporter.getInstance().clearOldProblems(resource);
 			break;
 		case IResourceDelta.ADDED:
 		case IResourceDelta.CHANGED:

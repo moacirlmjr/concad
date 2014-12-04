@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="concad.priotization.criteria.util.NOMHistoryOfAVersion"
+		table="HISTORYOFAVERSIONCRITERIA">
+		<id name="id" type="java.lang.Long">
+			<column name="HISTORYOFAVERSIONCRITERIA_ID" />
+			<generator class="increment" />
+		</id>
+		<property generated="never" lazy="false" name="pathToSource"
+			type="java.lang.String">
+			<column name="PATH" />
+		</property>
+		<bag name="nomValues" lazy="false" cascade="all-delete-orphan"
+			table="NOMVALUES">
+			<key column="HISTORYOFAVERSIONCRITERIA_ID" not-null="true" />
+			<one-to-many class="concad.priotization.criteria.util.NOMOfAClass" />
+		</bag>
+	</class>
+</hibernate-mapping>

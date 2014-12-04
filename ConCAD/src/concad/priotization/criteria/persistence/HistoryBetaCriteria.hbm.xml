@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="concad.priotization.criteria.HistoryBetaCriteria"
+		table="HISTORYCRITERIA">
+		<id name="id" type="java.lang.Long">
+			<column name="HISTORYCRITERIA_ID" />
+			<generator class="increment" />
+		</id>
+
+		<bag name="nomHistory" lazy="false" cascade="all-delete-orphan"
+			table="NOMHISTORY">
+			<key column="HISTORYCRITERIA_ID" not-null="true" />
+			<one-to-many class="concad.priotization.criteria.util.NOMHistoryOfAVersion" />
+		</bag>
+		<property generated="never" lazy="false" name="projectName"
+			type="java.lang.String">
+			<column name="PROJECTNAME" />
+		</property>
+	</class>
+</hibernate-mapping>

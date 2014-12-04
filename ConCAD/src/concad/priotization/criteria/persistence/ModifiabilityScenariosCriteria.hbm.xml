@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="concad.priotization.criteria.ModifiabilityScenariosCriteria"
+		table="MODIFIABILITYSCENARIOSCRITERIA">
+		<id name="id" type="java.lang.Long">
+			<column name="MODIFIABILITYSCENARIOSCRITERIA_ID" />
+			<generator class="increment" />
+		</id>
+
+		<bag name="scenarios" lazy="false" cascade="all-delete-orphan"
+			table="SCENARIO">
+			<key column="MODIFIABILITYSCENARIOSCRITERIA_ID" not-null="true" />
+			<one-to-many
+				class="concad.priotization.criteria.util.ModifiabilityScenario" />
+		</bag>
+		<property generated="never" lazy="false" name="projectName"
+			type="java.lang.String">
+			<column name="PROJECTNAME" />
+		</property>
+	</class>
+</hibernate-mapping>

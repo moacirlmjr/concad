@@ -12,7 +12,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 
 import concad.core.log.PluginLogger;
-import concad.core.reporter.Reporter;
 import concad.ui.l10n.Message;
 
 /**
@@ -114,15 +113,6 @@ public class IncrementalBuilder extends IncrementalProjectBuilder {
 		}
 
 		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	protected void clean(IProgressMonitor monitor) throws CoreException {
-		// Delete old files, markers and etc related to this project.
-		Reporter.getInstance().clearOldProblems(getProject());
 	}
 
 	protected void fullBuild(final IProgressMonitor monitor) {

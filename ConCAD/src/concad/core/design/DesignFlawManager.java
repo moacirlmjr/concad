@@ -113,12 +113,12 @@ public class DesignFlawManager {
 						boolean teste = true;
 						int position = 0;
 						for (CodeSmell smellAux : smells) {
-							position++;
 							if (smellAux.getKindOfSmellName().equalsIgnoreCase(smell.getKindOfSmellName())
 									&& classMethod.equalsIgnoreCase(smellAux.getElementName())) {
 								teste = false;
 								break;
 							}
+							position++;
 						}
 						if (teste){
 							smells.add(methodDetector.codeSmellDetected(methodMetrics));

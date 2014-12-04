@@ -123,8 +123,11 @@ public class DesignFlawManager {
 						if (teste){
 							smells.add(methodDetector.codeSmellDetected(methodMetrics));
 						}else{
+							CodeSmell ancient = smells.get(position);  
 							smells.remove(position);
-							smells.add(methodDetector.codeSmellDetected(methodMetrics));
+							CodeSmell newSmell = methodDetector.codeSmellDetected(methodMetrics);
+							newSmell.setDetectedAt(ancient.getDetectedAt());
+							smells.add(newSmell);
 						}
 					}
 				}
@@ -170,8 +173,11 @@ public class DesignFlawManager {
 						if (teste){
 							smells.add(methodDetector.codeSmellDetected(methodMetrics));
 						}else{
+							CodeSmell ancient = smells.get(position);  
 							smells.remove(position);
-							smells.add(methodDetector.codeSmellDetected(methodMetrics));
+							CodeSmell newSmell = methodDetector.codeSmellDetected(methodMetrics);
+							newSmell.setDetectedAt(ancient.getDetectedAt());
+							smells.add(newSmell);
 						}
 					} else {
 						countMetricsMethodPass++;

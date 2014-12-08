@@ -35,33 +35,6 @@
       </contexts>
    </extension>
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="true"
-            id="ConCAD.findSmellsContribution"
-            nameFilter="*"
-            objectClass="org.eclipse.core.resources.IProject">
-         <action
-               class="concad.ui.actions.FindDesignFlawAction"
-               enablesFor="+"
-               id="ConCAD.findSmellsAction1"
-               label="Find Code Anomalies"
-               menubarPath="ConCAD.menu1/ConCAD.groupMarker1">
-         </action>
-         <menu
-               id="ConCAD.menu1"
-               label="ConCAD"
-               path="additions">
-            <groupMarker
-                  name="ConCAD.groupMarker1">
-            </groupMarker>
-            <separator
-                  name="additions">
-            </separator>
-         </menu>
-      </objectContribution>
-   </extension>
-   <extension
          id="CONCAD_BUILDER"
          name="CONCAD BUILDER"
          point="org.eclipse.core.resources.builders">
@@ -146,6 +119,11 @@
                   label="Settings..."
                   style="push">
             </command>
+            <command
+                  commandId="ConCAD.ui.command.findCodeAnomalies"
+                  label="Find Code Anomalies"
+                  style="push">
+            </command>
          </menu>
       </menuContribution>
    </extension>
@@ -165,6 +143,11 @@
             defaultHandler="concad.ui.command.OpenSettingsPreferencePage"
             id="ConCAD.ui.command.open_settings"
             name="Settings...">
+      </command>
+      <command
+            defaultHandler="concad.ui.command.FindDesignFlawCommand"
+            id="ConCAD.ui.command.findCodeAnomalies"
+            name="Find Code Anomalies">
       </command>
    </extension>
    <extension

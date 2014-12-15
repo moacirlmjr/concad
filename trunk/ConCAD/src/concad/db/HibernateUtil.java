@@ -3,7 +3,7 @@ package concad.db;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import concad.core.log.PluginLogger;
+import concad.core.util.PluginLogger;
 
 public class HibernateUtil {
 	private static final SessionFactory sessionFactory = buildSessionFactory();

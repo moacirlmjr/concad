@@ -6,11 +6,11 @@ import org.eclipse.jdt.core.dom.IExtendedModifier;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 
+import concad.core.constant.MetricNames;
 import concad.core.smells.ShotgunSurgery;
 import concad.core.smells.detectors.configuration.ShotgunSurgeryDetectionConfiguration;
 import concad.core.smells.interfaces.CodeSmell;
 import concad.core.smells.interfaces.CodeSmellDetector;
-import concad.metrics.constants.MetricNames;
 import concad.metrics.storage.MethodMetrics;
 import concad.metrics.storage.NodeMetrics;
 

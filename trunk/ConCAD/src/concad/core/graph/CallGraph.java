@@ -15,7 +15,6 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 
 import concad.core.constant.Constant;
-import concad.core.context.Context;
 import concad.ui.enumerator.EnumVariableStatus;
 import concad.ui.enumerator.EnumVariableType;
 

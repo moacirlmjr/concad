@@ -1,4 +1,4 @@
-package concad.core.smells.constants;
+package concad.core.constant;
 
 public class SmellNames {
 	

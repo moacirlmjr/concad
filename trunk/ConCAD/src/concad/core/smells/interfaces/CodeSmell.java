@@ -12,7 +12,7 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
 import concad.core.design.DesignFlaw;
-import concad.core.log.PluginLogger;
+import concad.core.util.PluginLogger;
 import concad.metrics.storage.NodeMetrics;
 
 public abstract class CodeSmell extends DesignFlaw {

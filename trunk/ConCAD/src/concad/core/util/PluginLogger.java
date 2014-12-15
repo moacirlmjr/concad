@@ -1,4 +1,4 @@
-package concad.core.log;
+package concad.core.util;
 
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.IStatus;

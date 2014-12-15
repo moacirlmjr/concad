@@ -15,9 +15,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
 import concad.core.graph.CallGraph;
-import concad.core.log.PluginLogger;
+import concad.core.util.PluginLogger;
 import concad.core.visitor.VisitorCallGraph;
-import concad.ui.l10n.Message;
 
 public class BuilderJob extends Job {
 
@@ -109,7 +108,7 @@ public class BuilderJob extends Job {
 			// 02 - Get the CallGraph instance for this project.
 			CallGraph callGraph = getCallGraph();
 			if (null != callGraph) {
-				monitor.beginTask(Message.Plugin.TASK, IProgressMonitor.UNKNOWN);
+				monitor.beginTask("Task", IProgressMonitor.UNKNOWN);
 
 				@SuppressWarnings("unused")
 				List<IResource> resourcesUpdated = new ArrayList<IResource>();
@@ -124,8 +123,7 @@ public class BuilderJob extends Job {
 			} else {
 				String projectName = (null != getProject()) ? getProject()
 						.getName() : "";
-				PluginLogger.logError(String.format(
-						Message.Error.CALL_GRAPH_DOES_NOT_CONTAIN_PROJECT,
+				PluginLogger.logError(String.format("Call graph does not contain the project",
 						projectName), null);
 			}
 		

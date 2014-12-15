@@ -9,7 +9,7 @@ import org.eclipse.jdt.core.dom.ForStatement;
 import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.WhileStatement;
 
-import concad.metrics.constants.MetricNames;
+import concad.core.constant.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 import concad.metrics.storage.MethodMetrics;
 

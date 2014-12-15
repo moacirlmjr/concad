@@ -2,7 +2,7 @@ package concad.metrics.calculate;
 
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-import concad.metrics.constants.MetricNames;
+import concad.core.constant.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 import concad.metrics.storage.MethodMetrics;
 

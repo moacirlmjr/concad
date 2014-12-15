@@ -6,9 +6,9 @@ import java.util.TreeSet;
 
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-import concad.core.smells.constants.SmellNames;
+import concad.core.constant.MetricNames;
+import concad.core.constant.SmellNames;
 import concad.core.smells.interfaces.CodeSmell;
-import concad.metrics.constants.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 
 public class BrainClass extends CodeSmell{

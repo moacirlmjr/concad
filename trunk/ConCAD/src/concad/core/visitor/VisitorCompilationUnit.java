@@ -9,6 +9,7 @@ import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
+import concad.core.constant.MetricNames;
 import concad.core.graph.CallGraph;
 import concad.metrics.calculate.AccessToData;
 import concad.metrics.calculate.AverageMethodWeight;
@@ -38,7 +39,6 @@ import concad.metrics.calculate.PercentageOfAddedServices;
 import concad.metrics.calculate.SuperClassHierarchy;
 import concad.metrics.calculate.TightClassCohesion;
 import concad.metrics.calculate.WeightOfClass;
-import concad.metrics.constants.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 import concad.metrics.storage.MethodMetrics;
 

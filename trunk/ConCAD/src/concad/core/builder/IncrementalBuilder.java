@@ -11,8 +11,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 
-import concad.core.log.PluginLogger;
-import concad.ui.l10n.Message;
+import concad.core.util.PluginLogger;
 
 
 public class IncrementalBuilder extends IncrementalProjectBuilder {
@@ -78,7 +77,7 @@ public class IncrementalBuilder extends IncrementalProjectBuilder {
 		addProjectToFullBuiltList(getProject());
 		System.out.println("IncrementalBuilderFullBuild");
 		cancelIfNotRunning(jobProject);
-		jobProject = new BuilderJob(Message.Plugin.JOB, getProject());		
+		jobProject = new BuilderJob("Job", getProject());		
 		jobProject.run();
 	}
 
@@ -87,7 +86,7 @@ public class IncrementalBuilder extends IncrementalProjectBuilder {
 			cancelIfNotRunning(jobDelta);
 			PluginLogger.logInfo("IncrementalBuilder / incrementalBuild(IResourceDelta, IProgressMonitor)");
 			System.out.println("IncrementalBuilderIncrementalBuild");
-			jobDelta = new BuilderJob(Message.Plugin.JOB, delta);
+			jobDelta = new BuilderJob("Job", delta);
 			jobDelta.run();
 		} else {			
 			fullBuild(monitor);

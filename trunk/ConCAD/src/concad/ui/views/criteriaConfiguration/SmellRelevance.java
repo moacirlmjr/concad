@@ -1,4 +1,4 @@
-package concad.ui.views.criteriaConfiguration.util;
+package concad.ui.views.criteriaConfiguration;
 
 public class SmellRelevance {
 	private Long id;

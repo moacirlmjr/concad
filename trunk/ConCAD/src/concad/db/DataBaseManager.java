@@ -25,7 +25,7 @@ import concad.priotization.criteria.ModifiabilityScenariosCriteria;
 import concad.priotization.criteria.SmellRelevanceCriteria;
 import concad.priotization.criteria.util.NOMHistoryOfAVersion;
 import concad.priotization.criteria.util.NOMOfAClass;
-import concad.ui.views.criteriaConfiguration.util.SmellRelevance;
+import concad.ui.views.criteriaConfiguration.SmellRelevance;
 
 public class DataBaseManager {
 

@@ -6,10 +6,10 @@ import java.util.Vector;
 
 import org.eclipse.swt.widgets.Shell;
 
-import concad.core.smells.constants.SmellNames;
+import concad.core.constant.SmellNames;
 import concad.ui.views.criteriaConfiguration.CriterionConfigurationDialog;
+import concad.ui.views.criteriaConfiguration.SmellRelevance;
 import concad.ui.views.criteriaConfiguration.SmellRelevanceConfiguration;
-import concad.ui.views.criteriaConfiguration.util.SmellRelevance;
 
 public class SmellRelevanceCriteria extends Criterion{
 	private Long id;

@@ -42,8 +42,8 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
 import concad.core.constant.Constant;
-import concad.core.log.PluginLogger;
 import concad.core.util.Convert;
+import concad.core.util.PluginLogger;
 
 
 public class BindingResolver {

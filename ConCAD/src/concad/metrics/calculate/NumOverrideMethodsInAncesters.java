@@ -8,7 +8,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.IMethodBinding;
 import org.eclipse.jdt.core.dom.ITypeBinding;
 
-import concad.metrics.constants.MetricNames;
+import concad.core.constant.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 import concad.metrics.storage.MethodMetrics;
 

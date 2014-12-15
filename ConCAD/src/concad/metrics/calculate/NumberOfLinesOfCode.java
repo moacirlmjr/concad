@@ -1,6 +1,6 @@
 package concad.metrics.calculate;
 
-import concad.metrics.constants.MetricNames;
+import concad.core.constant.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 import concad.metrics.storage.MethodMetrics;
 

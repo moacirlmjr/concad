@@ -5,7 +5,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
 import concad.core.constant.Constant;
-import concad.core.log.PluginLogger;
+import concad.core.util.PluginLogger;
 
 
 public class Activator extends AbstractUIPlugin {

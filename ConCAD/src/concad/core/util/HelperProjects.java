@@ -3,6 +3,7 @@ package concad.core.util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -15,10 +16,10 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
+
 import concad.Activator;
 import concad.core.builder.IncrementalBuilder;
 import concad.core.constant.Constant;
-import concad.core.log.PluginLogger;
 
 
 public abstract class HelperProjects {

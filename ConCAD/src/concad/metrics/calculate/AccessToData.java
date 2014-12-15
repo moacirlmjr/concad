@@ -8,7 +8,7 @@ import org.eclipse.jdt.core.dom.FieldAccess;
 import org.eclipse.jdt.core.dom.MethodInvocation;
 import org.eclipse.jdt.core.dom.QualifiedName;
 
-import concad.metrics.constants.MetricNames;
+import concad.core.constant.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 import concad.metrics.storage.InvokingCache;
 import concad.metrics.storage.MethodMetrics;

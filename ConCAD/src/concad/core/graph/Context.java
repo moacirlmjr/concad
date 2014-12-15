@@ -1,4 +1,4 @@
-package concad.core.context;
+package concad.core.graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,6 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.Type;
 
-import concad.core.graph.VariableBinding;
 import concad.ui.enumerator.EnumVariableType;
 
 public class Context {

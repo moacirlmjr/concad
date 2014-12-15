@@ -12,7 +12,7 @@ import org.eclipse.jdt.core.dom.VariableDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.VariableDeclarationStatement;
 
-import concad.metrics.constants.MetricNames;
+import concad.core.constant.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 import concad.metrics.storage.MethodMetrics;
 

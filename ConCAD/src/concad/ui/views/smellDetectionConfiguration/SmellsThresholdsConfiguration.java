@@ -19,8 +19,8 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import concad.core.constant.SmellNames;
 import concad.core.design.DesignFlawManager;
-import concad.core.smells.constants.SmellNames;
 import concad.core.smells.detectors.configuration.BrainClassDetectionConfiguration;
 import concad.core.smells.detectors.configuration.BrainMethodDetectionConfiguration;
 import concad.core.smells.detectors.configuration.DataClassDetectionConfiguration;

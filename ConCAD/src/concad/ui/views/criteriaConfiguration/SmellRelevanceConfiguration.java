@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import concad.core.smells.constants.SmellNames;
+import concad.core.constant.SmellNames;
 import concad.db.DataBaseManager;
 import concad.priotization.criteria.SmellRelevanceCriteria;
 

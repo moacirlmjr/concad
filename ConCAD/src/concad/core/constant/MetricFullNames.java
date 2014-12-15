@@ -1,4 +1,4 @@
-package concad.metrics.constants;
+package concad.core.constant;
 
 public class MetricFullNames {
 

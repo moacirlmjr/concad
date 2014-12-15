@@ -22,7 +22,6 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-import concad.core.log.PluginLogger;
 import concad.core.smells.detectors.BrainClassDetector;
 import concad.core.smells.detectors.BrainMethodDetector;
 import concad.core.smells.detectors.DataClassDetector;
@@ -36,6 +35,7 @@ import concad.core.smells.detectors.TraditionBreakerDetector;
 import concad.core.smells.interfaces.CodeSmell;
 import concad.core.smells.interfaces.CodeSmellDetector;
 import concad.core.util.HelperProjects;
+import concad.core.util.PluginLogger;
 import concad.core.visitor.VisitorCompilationUnit;
 import concad.db.DataBaseManager;
 import concad.metrics.storage.ClassMetrics;

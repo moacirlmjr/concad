@@ -1,10 +1,10 @@
 package concad.core.smells.detectors;
 
+import concad.core.constant.MetricNames;
 import concad.core.smells.IntensiveCoupling;
 import concad.core.smells.detectors.configuration.IntensiveCouplingDetectionConfiguration;
 import concad.core.smells.interfaces.CodeSmell;
 import concad.core.smells.interfaces.CodeSmellDetector;
-import concad.metrics.constants.MetricNames;
 import concad.metrics.storage.MethodMetrics;
 import concad.metrics.storage.NodeMetrics;
 

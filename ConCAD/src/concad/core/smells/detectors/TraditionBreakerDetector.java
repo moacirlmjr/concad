@@ -2,11 +2,11 @@ package concad.core.smells.detectors;
 
 import java.util.List;
 
+import concad.core.constant.MetricNames;
 import concad.core.smells.TraditionBreaker;
 import concad.core.smells.detectors.configuration.TraditionBreakerDetectionConfiguration;
 import concad.core.smells.interfaces.CodeSmell;
 import concad.core.smells.interfaces.CodeSmellDetector;
-import concad.metrics.constants.MetricNames;
 import concad.metrics.storage.ClassMetrics;
 import concad.metrics.storage.NodeMetrics;
 

@@ -6,7 +6,7 @@ import java.util.TreeSet;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-import concad.core.smells.constants.SmellNames;
+import concad.core.constant.SmellNames;
 import concad.core.smells.interfaces.CodeSmell;
 import concad.metrics.storage.MethodMetrics;
 
